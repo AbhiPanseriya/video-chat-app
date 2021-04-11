@@ -18,13 +18,14 @@
 		"react-scripts": "4.0.3",
 		"simple-peer": "^9.10.0",
 		"socket.io-client": "^4.0.0",
+		"sweetalert": "^2.1.2",
 		"web-vitals": "^1.0.1",
 		"yarn": "^1.22.10"
 	},
 	"scripts": {
 		"start": "craco start",
-     "build": "craco build",
-     "test": "craco test",
+		"build": "craco build",
+		"test": "craco test",
 		"eject": "react-scripts eject"
 	},
 	"eslintConfig": {
