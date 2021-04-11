@@ -40,10 +40,8 @@ const ContextProvider = ({ children }) => {
 		randomNames[Math.floor(Math.random() * (randomNames.length + 1))];
 	localStorage.setItem("userName", userName);
   const changeName = (value) => {
-    const userName = value || randomNames[Math.floor(Math.random() * (randomNames.length + 1))];
-
-		setName(userName);
-		localStorage.setItem("userName", userName);
+    setName(value);
+		localStorage.setItem("userName", value);
 	};
 
 	const [name, setName] = useState(userName);

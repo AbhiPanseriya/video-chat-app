@@ -25,18 +25,18 @@ const Sidebar = ({ children }) => {
 				noValidate
 				autoComplete="off"
 			>
-				<div className="flex flex-col space-y-4 lg:w-1/2">
+				<div className="flex flex-col w-4/5 space-y-4 lg:w-1/2">
 					<input
 						type="text"
 						placeholder="Enter your name"
 						value={name}
 						onChange={(e) => changeName(e.target.value)}
-						onClick={(e) => e.target.select()}
-						className="w-full py-3 pl-2 rounded-lg bg-gray-50 focus:outline-none hover:bg-gray-100 hover:shadow focus:shadow"
+						onDoubleClick={(e) => e.target.select()}
+						className="w-full py-3 pl-2 text-center rounded-lg bg-gray-50 focus:outline-none hover:bg-gray-100 hover:shadow focus:shadow"
 					/>
 				</div>
 				{(!callAccepted || callEnded) && (
-					<div className="flex flex-col space-y-4 lg:w-1/2">
+					<div className="flex flex-col w-4/5 space-y-4 lg:w-1/2">
 						<CopyToClipboard text={me}>
 							<button
 								type="button"
@@ -50,7 +50,7 @@ const Sidebar = ({ children }) => {
 					</div>
 				)}
 				{callReceiving && (
-					<div className="flex flex-col space-y-4 lg:w-1/2">
+					<div className="flex flex-col w-4/5 space-y-4 lg:w-1/2">
 						<button
 							type="button"
 							className="w-full p-3 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none hover:shadow"
@@ -63,40 +63,38 @@ const Sidebar = ({ children }) => {
 					</div>
 				)}
 				{!callReceiving && (
-					<>
-						<div className="flex flex-col w-4/5 space-y-4 lg:w-1/2">
-							<input
-								type="text"
-								placeholder="Enter ID to call"
-								value={idToCall}
-								onChange={(e) => setIdToCall(e.target.value)}
-								onClick={(e) => e.target.select()}
-								className="w-full py-3 pl-2 rounded-lg bg-gray-50 focus:outline-none hover:shadow focus:shadow"
-							/>
-						</div>
-						<div className="flex flex-col w-4/5 space-y-4 lg:w-1/2">
-							{callAccepted && !callEnded ? (
-								<button
-									type="button"
-									onClick={leaveCall}
-									className="flex items-center justify-center w-full py-3 text-xl text-white bg-red-500 rounded-lg hover:bg-red-600 focus:outline-none"
-								>
-									<PhoneDisabled />
-									<span className="pl-2">Hang Up</span>
-								</button>
-							) : (
-								<button
-									type="button"
-									onClick={() => callUser(idToCall)}
-									className="flex items-center justify-center w-full py-3 text-xl text-white bg-green-500 rounded-lg hover:bg-green-600 focus:outline-none"
-								>
-									<Phone />
-									<span className="pl-2">Call</span>
-								</button>
-							)}
-						</div>
-					</>
+					<div className="flex flex-col w-4/5 space-y-4 lg:w-1/2">
+						<input
+							type="text"
+							placeholder="Enter ID to call"
+							value={idToCall}
+							onChange={(e) => setIdToCall(e.target.value)}
+							onClick={(e) => e.target.select()}
+							className="w-full py-3 pl-2 rounded-lg bg-gray-50 focus:outline-none hover:shadow focus:shadow"
+						/>
+					</div>
 				)}
+				<div className="flex flex-col w-4/5 space-y-4 lg:w-1/2">
+					{callAccepted && !callEnded ? (
+						<button
+							type="button"
+							onClick={leaveCall}
+							className="flex items-center justify-center w-full py-3 text-xl text-white bg-red-500 rounded-lg hover:bg-red-600 focus:outline-none"
+						>
+							<PhoneDisabled />
+							<span className="pl-2">Hang Up</span>
+						</button>
+					) : (
+						<button
+							type="button"
+							onClick={() => callUser(idToCall)}
+							className="flex items-center justify-center w-full py-3 text-xl text-white bg-green-500 rounded-lg hover:bg-green-600 focus:outline-none"
+						>
+							<Phone />
+							<span className="pl-2">Call</span>
+						</button>
+					)}
+				</div>
 			</form>
 			{children}
 		</>
